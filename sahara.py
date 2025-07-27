@@ -1,8 +1,7 @@
 import streamlit as st
-from googletrans import Translator
 
-# Initialize translator
-translator = Translator()
+def translate_text(text, dest):
+    return text
 
 # Language options
 languages = {
