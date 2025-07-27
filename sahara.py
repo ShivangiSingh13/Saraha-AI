@@ -1,7 +1,21 @@
 import streamlit as st
 
+translations = {
+    "hi": {
+        "Select your category:": "अपनी श्रेणी चुनें:",
+        "Recommended Government Schemes:": "अनुशंसित सरकारी योजनाएं:",
+        "Your Feedback Helps Us Improve:": "आपकी प्रतिक्रिया हमें सुधारने में मदद करती है:",
+        "Let us know how we can help you better:": "हमें बताएं कि हम आपकी कैसे मदद कर सकते हैं:",
+        "Submit Feedback": "प्रतिक्रिया सबमिट करें",
+        "Thank you for your valuable input!": "आपके बहुमूल्य सुझाव के लिए धन्यवाद!",
+        "About this App": "इस ऐप के बारे में",
+        "This digital companion helps...": "यह डिजिटल साथी नागरिकों को उनकी प्रोफ़ाइल के आधार पर सरकारी योजनाओं को समझने और खोजने में मदद करता है।"
+    }
+}
 def translate_text(text, dest):
-    return text
+    if dest == "en":
+        return text
+    return translations.get(dest, {}).get(text, text)
 
 # Language options
 languages = {
