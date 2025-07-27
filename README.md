@@ -1,28 +1,26 @@
-# Sahara AI – Digital Companion for Social Welfare
+Sahara AI: Digital Companion for Social Welfare
 
-Sahara AI is a multilingual, user-friendly platform that recommends government schemes to users based on their category (e.g., Women, Farmers, Students). It aims to bridge the awareness gap for social welfare programs.
+🔗 Live Demo: https://saraha-ai-5copaffsoflajl3rpaziuj.streamlit.app/ 
+📂 GitHub Repository: https://github.com/ShivangiSingh13/sahara-ai
 
-## 💡 Features
-- Language Translation (English, Hindi)
-- Personalized Scheme Recommendations
-- Feedback Collection
-- Minimal UI using Streamlit
+🌐 Overview
+Sahara AI is a multilingual digital assistant that helps users (women, farmers, and students) access relevant government welfare schemes with ease. Designed especially for rural and underserved communities, it supports both Hindi and English.
 
-## 🛠️ Tech Stack
+✅ Features
+- 🔤 Multilingual Support (Hindi & English)
+- 🧑‍🌾 Category-Based Recommendations (Women, Farmers, Students)
+- 📝 Dynamic Scheme Details
+- 💬 Feedback Form
+- ℹ️ About Section with App Purpose
+
+🛠️ Tech Stack
 - Python
 - Streamlit
-- Googletrans API
-- Deployed on Streamlit Cloud
+- Google Translate API (for Hindi translations)
+- GitHub + Streamlit Cloud for Deployment
 
-## 🚀 Live Demo
-[Click Here to Try the App](https://your-streamlit-link)
-
-## 📹 Demo Video
-[Watch the Video Walkthrough](https://your-youtube-link)
-
-## 📝 How to Run Locally
+🚀 How to Run Locally
+1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/sahara-ai.git
 cd sahara-ai
-pip install -r requirements.txt
-streamlit run streamlit_app.py
