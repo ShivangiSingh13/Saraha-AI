@@ -1,5 +1,6 @@
 import streamlit as st
 
+# Translation dictionary
 translations = {
     "hi": {
         "Select your category:": "अपनी श्रेणी चुनें:",
@@ -9,13 +10,20 @@ translations = {
         "Submit Feedback": "प्रतिक्रिया सबमिट करें",
         "Thank you for your valuable input!": "आपके बहुमूल्य सुझाव के लिए धन्यवाद!",
         "About this App": "इस ऐप के बारे में",
-        "This digital companion helps...": "यह डिजिटल साथी नागरिकों को उनकी प्रोफ़ाइल के आधार पर सरकारी योजनाओं को समझने और खोजने में मदद करता है।"
+        "This digital companion helps citizens explore and understand government schemes based on their profile. We aim to bridge the awareness gap and make social welfare accessible to all.": 
+        "यह डिजिटल साथी नागरिकों को उनकी प्रोफ़ाइल के आधार पर सरकारी योजनाओं को समझने और खोजने में मदद करता है। हम जागरूकता की खाई को पाटने और सामाजिक कल्याण को सभी के लिए सुलभ बनाने का लक्ष्य रखते हैं।",
+        "Choose your language / अपनी भाषा चुनें:": "अपनी भाषा चुनें:",
+        "Women": "महिला",
+        "Farmers": "किसान",
+        "Students": "छात्र"
     }
 }
-def translate_text(text, dest):
-    if dest == "en":
+
+# Manual translate function using dictionary
+def translate_text(text, lang):
+    if lang == "en":
         return text
-    return translations.get(dest, {}).get(text, text)
+    return translations.get(lang, {}).get(text, text)
 
 # Language options
 languages = {
@@ -39,16 +47,7 @@ schemes = {
     ]
 }
 
-# Translate text function
-def translate_text(text, dest):
-    if dest == "en":
-        return text
-    try:
-        return translator.translate(text, dest=dest).text
-    except:
-        return text  # fallback in case of API failure
-
-# App title
+# App UI
 st.set_page_config(page_title="Digital Companion for Social Welfare", layout="centered")
 st.title("🤝 Digital Companion for Social Welfare")
 
@@ -57,7 +56,10 @@ lang = st.selectbox("Choose your language / अपनी भाषा चुन�
 dest_lang = languages[lang]
 
 # User type selection
-user_type = st.radio(translate_text("Select your category:", dest_lang), list(schemes.keys()))
+user_keys = list(schemes.keys())
+translated_user_keys = [translate_text(key, dest_lang) for key in user_keys]
+selected_index = st.radio(translate_text("Select your category:", dest_lang), translated_user_keys, index=0)
+user_type = user_keys[translated_user_keys.index(selected_index)]  # Get original key
 
 # Show schemes
 st.subheader(translate_text("Recommended Government Schemes:", dest_lang))
@@ -75,5 +77,4 @@ if st.button(translate_text("Submit Feedback", dest_lang)):
 # About section
 with st.expander(translate_text("About this App", dest_lang)):
     st.write(translate_text(
-        "This digital companion helps citizens explore and understand government schemes based on their profile."
-        " We aim to bridge the awareness gap and make social welfare accessible to all.", dest_lang))
+        "This digital companion helps citizens explore and understand government schemes based on their profile. We aim to bridge the awareness gap and make social welfare accessible to all.", dest_lang))
